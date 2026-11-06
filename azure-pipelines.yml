@@ -84,6 +84,21 @@ stages:
               summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/build/reports/jacoco/test/jacocoTestReport.xml'
               pathToSources: '$(System.DefaultWorkingDirectory)/src/main/java'
             displayName: 'Publicar Cobertura en Azure DevOps'
+  # ==========================================
+  # STAGE X: SEGURIDAD (SEGURIDAD)
+  # ==========================================
+  - stage: Seguridad
+    displayName: 'Seguridad'
+    dependsOn: [CI, Approval, CD]
+    condition: always()
+    jobs:
+      - job: send_status_email
+        displayName: 'Seguridad'
+        steps:
+          - script: |
+              echo "Simulacion de seguridad"
+            displayName: 'Simulación de seguridad'
+
 
   # ==========================================
   # STAGE 2: APROBACIÓN MANUAL (APPROVAL)

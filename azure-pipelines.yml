@@ -89,7 +89,7 @@ stages:
   # ==========================================
   - stage: Seguridad
     displayName: 'Seguridad'
-    dependsOn: [CI, Approval, CD]
+    dependsOn: [CI]
     condition: always()
     jobs:
       - job: send_status_email
